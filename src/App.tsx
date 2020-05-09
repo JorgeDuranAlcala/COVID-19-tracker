@@ -1,26 +1,53 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component, ChangeEvent } from 'react';
 import './App.css';
+import { Card, Chart, CountryP } from './components';
+import { fetchData } from './api';
+import { apiData, data } from './models/api.interface';
 
-function App() {
-  return (
+interface State {
+  data: apiData<data>
+  country: string
+}
+
+class App extends Component {
+
+  state: State = {
+    data: {},
+    country: ''
+  }
+
+
+  async componentDidMount() {
+    const res = await fetchData();
+    this.setState({ data: res })
+    
+  }
+  
+
+  handleCountryChange = async (e: ChangeEvent<HTMLSelectElement>) => {
+    try {
+      const { value }  = e.target;
+      const res = await fetchData(value);
+      this.setState({ data: res, country: value })
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  
+  render() {
+
+    const { data, country } = this.state;
+
+    return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="container">
+        <Card Data={data}/>
+        <CountryP handleCountryChange={this.handleCountryChange} />
+        <Chart country={country} Data={data}/>
+      </div>
     </div>
   );
+}
 }
 
 export default App;

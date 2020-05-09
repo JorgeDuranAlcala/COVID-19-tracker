@@ -1,0 +1,6 @@
+.container {
+    width: 50%;
+    margin-top: 4vmin !important;
+    display: flex;
+    justify-content: center;
+}
