@@ -7,6 +7,10 @@ export type apiData<T> =  {
     lastUpdate?: string;
 }
 
+export interface apiDataOp  {
+    [x: string]: data;
+}
+
 export interface data {
     value: number;
     detail?: string;

@@ -1,7 +1,8 @@
 import React, { Component, ChangeEvent } from 'react';
-import './App.css';
+import styles from './App.module.css';
 import { Card, Chart, CountryP } from './components';
 import { fetchData } from './api';
+import logo from "./Images/covid19-logo.jpg"
 import { apiData, data } from './models/api.interface';
 
 interface State {
@@ -39,8 +40,11 @@ class App extends Component {
     const { data, country } = this.state;
 
     return (
-    <div className="App">
-      <div className="container">
+    <div className={styles.App}>
+      <div className={styles.container}>
+        <div className={styles.logo}>
+            <img src={logo} alt="covid19-logo"/>
+        </div>
         <Card Data={data}/>
         <CountryP handleCountryChange={this.handleCountryChange} />
         <Chart country={country} Data={data}/>

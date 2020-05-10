@@ -1,0 +1,23 @@
+
+.card {
+    margin-left: 2% !important;
+}
+
+.card:nth-of-type(1) {
+    border-bottom: 15px solid rgb(5, 5, 255) !important;
+}
+.card:nth-of-type(2) {
+    border-bottom: 15px solid rgb(13, 255, 5) !important;
+}
+.card:nth-of-type(3) {
+     border-bottom: 15px solid rgb(255, 5, 5) !important;
+}
+
+@media screen and (max-width: 780px) {
+    .container {
+        width: 70%;
+    }
+    .card {
+        margin-top: 40px !important;
+    }
+}

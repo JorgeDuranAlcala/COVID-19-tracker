@@ -17,10 +17,12 @@ const Cards = (props: Props) => {
     return (<>..loading</>)
   }
 
+  const _getKeyValue_ = (key: string) => (obj: Record<string, any>) => obj[key];
+
 return (
-    <div>
+    <div className={styles.container}>
         <Grid container spacing={3} justify="center">
-            <Grid item xs={12} md={3} component={Card}>
+            <Grid item xs={12} md={3} component={Card} className={styles.card}>
                 <CardContent>
                     <Typography color="textSecondary" gutterBottom>infected</Typography>
                     <Typography variant="h5"><CountUp start={0} end={confirmed?.value || 0} duration={2} /></Typography>
@@ -28,7 +30,7 @@ return (
                     <Typography variant="body2">Number of active cases of covid-19</Typography>
                 </CardContent>
             </Grid>
-            <Grid item xs={12} md={3} component={Card}>
+            <Grid item xs={12} md={3} component={Card} className={styles.card}>
                 <CardContent>
                     <Typography color="textSecondary" gutterBottom>recoverd</Typography>
                     <Typography variant="h5"><CountUp start={0} end={recovered.value} duration={2} /></Typography>
@@ -36,7 +38,7 @@ return (
                     <Typography variant="body2">Number of recoveries from covid-19</Typography>
                 </CardContent>
             </Grid>
-            <Grid item xs={12} md={3} component={Card}>
+            <Grid item xs={12} md={3} component={Card} className={styles.card}>
                 <CardContent>
                     <Typography color="textSecondary" gutterBottom>Deaths</Typography>
                     <Typography variant="h5"><CountUp start={0} end={deaths.value} duration={2} /></Typography>

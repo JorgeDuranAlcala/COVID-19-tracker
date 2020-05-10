@@ -16,3 +16,21 @@ body {
     align-items: center;
     flex-direction: column;
 }
+
+.logo {
+    width: 20%;
+}
+
+.logo img {
+    width: 100%;
+}
+
+@media screen and (max-width: 780px) {
+    .container {
+        width: 80%;
+        margin-left: 9vmin;
+    }
+    .logo {
+        width: 70%;
+    }
+}
